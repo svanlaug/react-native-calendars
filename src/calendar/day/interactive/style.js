@@ -49,6 +49,12 @@ export default function styleConstructor(theme={}) {
     disabledText: {
       color: appStyle.textDisabledColor
     },
+    bookedDate: {
+      color: theme.bookedDateColor
+    },
+    bookedDateText: {
+      color: theme.bookedDateTextColor
+    },
     quickAction: {
       backgroundColor: 'white',
       borderWidth: 1,

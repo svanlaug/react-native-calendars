@@ -73,6 +73,7 @@ class Day extends Component {
       }
 
       const color = next.color;
+      const blocked = next.blocked;
       if (next.status === 'NotAvailable') {
         prev.textStyle = this.style.naText;
       }
@@ -93,6 +94,9 @@ class Day extends Component {
       }
       if (next.textColor) {
         prev.textStyle.color = next.textColor;
+      }
+      if (blocked) {
+        prev.blocked = blocked;
       }
       return prev;
     }, {});
@@ -129,39 +133,45 @@ class Day extends Component {
       if (flags.rightFillerStyle) {
         rightFillerStyle.backgroundColor = flags.rightFillerStyle;
       }
+      if (flags.blocked) {
+        textStyle.push(this.style.disabledText);
+      }
+      if (flags.startingDay || flags.endingDay || (flags.day && !flags.blocked)) {
+        textStyle.push(this.style.bookedDateText);
+      }
 
       if (flags.startingDay && !flags.endingDay) {
         leftFillerStyle = {
           backgroundColor: this.theme.calendarBackground
         };
         rightFillerStyle = {
-          backgroundColor: flags.startingDay.color
+          backgroundColor: this.theme.bookedDateColor
         };
         containerStyle.push({
-          backgroundColor: flags.startingDay.color
+          backgroundColor: this.theme.bookedDateColor
         });
       } else if (flags.endingDay && !flags.startingDay) {
         rightFillerStyle = {
           backgroundColor: this.theme.calendarBackground
         };
         leftFillerStyle = {
-          backgroundColor: flags.endingDay.color
+          backgroundColor: this.theme.bookedDateColor
         };
         containerStyle.push({
-          backgroundColor: flags.endingDay.color
+          backgroundColor: this.theme.bookedDateColor
         });
-      } else if (flags.day) {
-        leftFillerStyle = {backgroundColor: flags.day.color};
-        rightFillerStyle = {backgroundColor: flags.day.color};
+      } else if (flags.day && !flags.blocked) {
+        leftFillerStyle = {backgroundColor: this.theme.bookedDateColor};
+        rightFillerStyle = {backgroundColor: this.theme.bookedDateColor};
       } else if (flags.endingDay && flags.startingDay) {
         rightFillerStyle = {
-          backgroundColor: this.theme.calendarBackground
+          backgroundColor: this.theme.bookedDateColor
         };
         leftFillerStyle = {
-          backgroundColor: this.theme.calendarBackground
+          backgroundColor: this.theme.bookedDateColor
         };
         containerStyle.push({
-          backgroundColor: flags.endingDay.color
+          backgroundColor: this.theme.bookedDateColor
         });
       }
 
