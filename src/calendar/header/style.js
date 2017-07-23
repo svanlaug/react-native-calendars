@@ -30,20 +30,6 @@ export default function(theme={}) {
           tintColor: appStyle.arrowColor
         }
       })
-    },
-    week: {
-      marginTop: 7,
-      flexDirection: 'row',
-      justifyContent: 'space-around'
-    },
-    dayHeader: {
-      marginTop: 2,
-      marginBottom: 7,
-      width: 32,
-      textAlign: 'center',
-      fontSize: appStyle.textDayHeaderFontSize,
-      fontFamily: appStyle.textDayHeaderFontFamily,
-      color: appStyle.textSectionTitleColor
     }
   });
 }
