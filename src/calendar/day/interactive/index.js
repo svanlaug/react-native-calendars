@@ -165,10 +165,10 @@ class Day extends Component {
         rightFillerStyle = {backgroundColor: this.theme.bookedDateColor};
       } else if (flags.endingDay && flags.startingDay) {
         rightFillerStyle = {
-          backgroundColor: this.theme.bookedDateColor
+          backgroundColor: this.theme.calendarBackground
         };
         leftFillerStyle = {
-          backgroundColor: this.theme.bookedDateColor
+          backgroundColor: this.theme.calendarBackground
         };
         containerStyle.push({
           backgroundColor: this.theme.bookedDateColor
